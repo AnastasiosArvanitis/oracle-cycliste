@@ -21,6 +21,8 @@ CREATE TABLE coureurs (
         REFERENCES equipes(code)
 );
 
+select * from coureurs;
+
 CREATE TABLE etapes (
     code CHAR(8) CONSTRAINT pk_etapes PRIMARY KEY,
     jour DATE NOT NULL,
@@ -39,7 +41,14 @@ CREATE TABLE resultats (
 );
 
 
+ALTER TABLE resultats
+ADD bonification NUMBER(6) NULL;
 
+ALTER TABLE resultats
+ADD points NUMBER(3) NULL;
+
+ALTER TABLE etapes
+ADD CONSTRAINT un_resul_jour UNIQUE(jour);
 
 
 
