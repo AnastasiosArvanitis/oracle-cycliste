@@ -10,6 +10,8 @@ CREATE TABLE equipes (
     constraint ch_equipes_nationalite CHECK(nationalite = UPPER(nationalite))
 );
 
+
+
 CREATE TABLE coureurs (
     dossard NUMBER(6) GENERATED ALWAYS AS IDENTITY
         CONSTRAINT pk_coureur PRIMARY KEY,
@@ -21,6 +23,8 @@ CREATE TABLE coureurs (
         REFERENCES equipes(code)
 );
 
+
+
 select * from coureurs;
 
 CREATE TABLE etapes (
@@ -31,6 +35,8 @@ CREATE TABLE etapes (
     distance NUMBER(5,2) NOT NULL
 );
 
+--drop table etapes;
+
 CREATE TABLE resultats (
     coureur NUMBER(6) CONSTRAINT fk_resultats_coureurs
         REFERENCES coureurs(dossard),
@@ -40,6 +46,7 @@ CREATE TABLE resultats (
     CONSTRAINT pk_resultats PRIMARY KEY(coureur, etape)
 );
 
+--drop table resultats;
 
 ALTER TABLE resultats
 ADD bonification NUMBER(6) NULL;
